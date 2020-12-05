@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'main.html' %}
 
-<form action="{% url 'register' %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Register">
-</form>
 
-</body>
-</html>
+{% block content %}
+    <div class="container">
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input class="btn btn-success" type="submit" value="Register">
+        </form>
+    </div>
+{% endblock %}
