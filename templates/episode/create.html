@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <h1>Create Episode</h1>
+    <form action="{% url 'create.episode' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <label for="id_title">Title: </label>
+        <input id="id_title" type="text" name="title" placeholder="title...">
+        <br>
+        <label for="id_time">Time: </label>
+        <input id="id_time" type="text" name="time" placeholder="time...">
+        <br>
+        <label for="id_video">Video: </label>
+        <input id="id_video" type="file" name="video">
+
+        <input type="submit" value="Create">
+    </form>
+
+{% endblock %}

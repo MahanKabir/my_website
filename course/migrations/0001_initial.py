@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField()),
                 ('author', models.CharField(max_length=50)),
                 ('price', models.CharField(max_length=20)),
-                ('image', models.ImageField(upload_to='static/course/images/')),
+                ('image', models.ImageField(upload_to='static-img/course/images/')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
             ],

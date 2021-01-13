@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.templatetags import static
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -34,6 +36,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'user',
     'course',
+    'episode',
+    'category',
+    'article',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
 
     'bootstrap',
     'fontawesome',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGOUT_REDIRECT_URL = '/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
