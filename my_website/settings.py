@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.templatetags import static
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -31,12 +34,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'user',
+    'course',
+    'episode',
+    'category',
+    'article',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'bootstrap',
+    'fontawesome',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +89,12 @@ WSGI_APPLICATION = 'my_website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'my_website',
+        'USER': 'poulstar',
+        'PASSWORD': 'poulstar',
+        'HOST': '127.0.0.1',#localhost
+        'PORT': '',#3306
     }
 }
 
@@ -119,3 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGOUT_REDIRECT_URL = '/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]

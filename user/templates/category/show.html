@@ -1,0 +1,41 @@
+{% extends 'dashboard.html' %}
+
+
+{% block dashboard %}
+
+    <h2>دسته‌بندی</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>عنوان</th>
+              <th>عکس</th>
+              <th>محتوا</th>
+              <th>تاریخ ساخت</th>
+              <th>تاریخ ویرایش</th>
+              <th>عملیات</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for category in categories %}
+            <tr>
+              <td>{{ category.title }}</td>
+              <td><img src="/{{ category.image }}" width="50px" height="50px"></td>
+              <td>{{ category.body }}</td>
+              <td>{{ category.created_at }}</td>
+              <td>{{ category.updated_at }}</td>
+              <td>
+                  <a class="btn btn-warning" href="{% url 'update.cat' category.id %}">ویرایش</a>
+                  <a class="btn btn-danger" href="{% url 'delete.cat' category.id %}">حذف</a>
+              </td>
+            </tr>
+          {% endfor %}
+
+
+
+          </tbody>
+        </table>
+      </div>
+
+{% endblock %}
