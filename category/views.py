@@ -60,7 +60,6 @@ def api_read(request):
 @api_view(['PUT'])
 def api_update(request, pk):
     category = Category.objects.get(pk=pk)
-
     if request.method == "PUT":
         serializer = CategorySerializer(category, data=request.data)
         if serializer.is_valid():
