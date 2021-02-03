@@ -1,0 +1,24 @@
+{% extends 'dashboard.html' %}
+
+{% block dashboard %}
+
+    <div class="container">
+        <form class="form-group"  action="{% url 'update.cat' category.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="id_title">Title:
+                <input class="form-control"  id="id_title" type="text" name="title" value="{{ category.title }}">
+            </label>
+            <br>
+            <label for="id_image">Image:
+                <input class="form-control"  id="id_image" type="file" name="image" value="{{ category.image }}">
+            </label>
+            <br>
+            <label for="id_body">Title:
+                <textarea class="form-control" id="id_body" name="body">{{ category.body }}</textarea>
+            </label>
+            <br>
+            <input class="btn btn-success" type="submit" value="ثبت">
+        </form>
+    </div>
+
+{% endblock %}

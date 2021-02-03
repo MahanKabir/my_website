@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required, permission_required
+from django.http import HttpRequest
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -12,30 +14,35 @@ from .serializers import CategorySerializer
 
 
 def create(request):
+
     if request.method == "POST":
         form = CategoryForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('read.cat')
 
-    return render(request, 'category/create.html')
+    return render(request, 'category_create.html')
 
 def read(request):
-    pass
-    # categories = Category.objects.all()
-    # return render(request, 'category/read.html', {'categories': categories})
-
-def dashboard_read(request):
     categories = Category.objects.all()
-    return render(request, 'category/show.html', {'categories': categories})
+    return render(request, 'category_read.html', {'categories': categories})
 
-def update(request):
-    pass
+@login_required
+@permission_required('category.change_category')
+def update(request, id):
 
-def delete(request):
-    pass
+    category = Category.objects.get(id=id)
+    if request.method == "POST":
+        form = CategoryForm(request.POST, request.FILES, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('read.cat')
+    return render(request, 'category_update.html', {'category': category})
 
-
+def delete(request, id):
+    category = Category.objects.get(id=id)
+    category.delete()
+    return redirect('read.cat')
 
 #------------------------------api
 
@@ -69,8 +76,9 @@ def api_update(request, pk):
 
 @api_view(['DELETE'])
 def api_delete(request, id):
-    category = Category.objects.get(id=id)
-    category.delete()
-    return Response(status=HTTP_204_NO_CONTENT)
+    if request.method == "DELETE":
+        category = Category.objects.get(id=id)
+        category.delete()
+        return Response(status=HTTP_204_NO_CONTENT)
 
 

@@ -20,11 +20,8 @@ def create(request):
 
 def read(request):
     courses = Course.objects.all()
-    return render(request, 'course/read.html', {'courses': courses})
+    return render(request, 'course_read.html', {'courses': courses})
 
-def dashboard_read(request):
-    courses = Course.objects.all()
-    return render(request, 'course/show.html', {'courses': courses})
 
 def update(request, id):
     course = Course.objects.get(id=id)

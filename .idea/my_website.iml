@@ -23,6 +23,8 @@
       <list>
         <option value="$MODULE_DIR$/templates" />
         <option value="$MODULE_DIR$/user/templates" />
+        <option value="$MODULE_DIR$/category/templates" />
+        <option value="$MODULE_DIR$/course/templates" />
       </list>
     </option>
   </component>

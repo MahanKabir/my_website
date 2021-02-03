@@ -1,8 +1,6 @@
-{% extends 'dashboard.html' %}
+{% extends 'main.html' %}
 
-
-{% block dashboard %}
-
+{% block content %}
     <h2>دسته‌بندی</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -10,24 +8,30 @@
             <tr>
               <th>عنوان</th>
               <th>عکس</th>
-              <th>محتوا</th>
+              <th>متن</th>
               <th>تاریخ ساخت</th>
               <th>تاریخ ویرایش</th>
-              <th>عملیات</th>
+              <th>اعمال</th>
             </tr>
           </thead>
           <tbody>
 
           {% for category in categories %}
-            <tr>
+          <tr>
               <td>{{ category.title }}</td>
-              <td><img src="/{{ category.image }}" width="50px" height="50px"></td>
+              <td>
+                  <img src="/{{ category.image }}" width="100vw" height="100vw">
+              </td>
               <td>{{ category.body }}</td>
               <td>{{ category.created_at }}</td>
               <td>{{ category.updated_at }}</td>
               <td>
-                  <a class="btn btn-warning" href="{% url 'update.cat' category.id %}">ویرایش</a>
-                  <a class="btn btn-danger" href="{% url 'delete.cat' category.id %}">حذف</a>
+                {% if perms.category.change_category %}
+                <a class="btn btn-warning" href="{% url 'update.cat' category.id %}">ویرایش</a>
+                {% endif %}
+                {% if perms.category.delete_category %}
+                    <a class="btn btn-danger" href="{% url 'delete.cat' category.id %}">حذف</a>
+                {% endif %}
               </td>
             </tr>
           {% endfor %}
