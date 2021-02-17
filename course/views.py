@@ -16,7 +16,7 @@ def create(request):
             form.save()
             return redirect('dashboard')
 
-    return redirect('dashboard')
+    return render(request, 'create.html', {'courses': courses})
 
 def read(request):
     courses = Course.objects.all()

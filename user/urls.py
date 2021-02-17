@@ -7,7 +7,11 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('register', views.register, name='register'), #localhost:8000/accounts/register
     path('profile/', views.profile, name='profile'), #localhost:8000/accounts/profile
-    path('dashboard/', views.dashboard, name='dashboard'), #localhost:8000/accounts/dashboard
+    path('desktop/', views.desktop, name='desktop'), #localhost:8000/accounts/desktop
+    path('perm', views.perm, name='perm'), #localhost:8000/accounts/perm
+    path('group', views.group_user, name='group'), #localhost:8000/accounts/group
+    path('c_g', views.create_group, name='c_g'), #localhost:8000/accounts/c_g
+    path('manage', views.user_manage, name='manage'), #localhost:8000/accounts/manage
 ]
 # accounts/login/ [name='login']
 # accounts/logout/ [name='logout']

@@ -57,7 +57,7 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="بحث" aria-label="بحث">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">خروج</a>
+      <a class="nav-link" href="{% url 'logout' %}">خروج</a>
     </li>
   </ul>
 </header>
@@ -66,44 +66,6 @@
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'read.cat' %}">
-              <span data-feather="home"></span>
-              دسته‌بندی
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'read.course' %}">
-              <span data-feather="file"></span>
-              دوره
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
-              منتجات
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              الزبائن
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              التقارير
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              التكامل
-            </a>
-          </li>
-        </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>التقارير المحفوظة</span>

@@ -1,0 +1,26 @@
+{% extends 'admin/dashboard.html' %}
+
+
+
+{% block dashboard %}
+
+
+    <form action="{% url 'manage' %}" method="POST">
+        {% csrf_token %}
+
+        <select name="choose">
+            {% for model in models %}    
+                <option value="{{ model }}">{{ model }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="text" name="codename" placeholder="code name">
+        <input type="text" name="permname" placeholder="permission name">
+        <input type="text" name="group" placeholder="group name">
+        <input type="submit" value="create group">
+
+    </form>
+
+    
+{% endblock %}
+    

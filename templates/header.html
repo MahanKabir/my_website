@@ -51,7 +51,7 @@
 <div class="nav-scroller bg-white shadow-sm">
   <nav class="nav nav-underline" aria-label="Secondary navigation">
       {% if user.is_authenticated %}
-        <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Dashboard</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'desktop' %}">Dashboard</a>
       {% endif %}
     <a class="nav-link" href="{% url 'create.cat' %}">دسته‌بندی</a>
     <a class="nav-link" href="{% url 'create.course' %}">دوره</a>
